@@ -1,0 +1,41 @@
+{
+  "champions": [
+    {
+      "id": 1,
+      "name": "Ahri",
+      "matches": [
+        {
+          "id": 1,
+          "matchName": "Yasuo",
+          "matchDescription": "Very hard to play against"
+        },
+        {
+          "id": 2,
+          "matchName": "Zed",
+          "matchDescription": "Very hard to play against"
+        }
+      ]
+    },
+    {
+      "_id": 2,
+      "name": "Annie",
+      "matches": [
+        {
+          "_id": 1,
+          "matchName": "Yasuo",
+          "matchDescription": "Very hard"
+        },
+        {
+          "_id": 2,
+          "matchName": "Zed",
+          "matchDescription": "Very easy"
+        },
+        {
+          "_id": 3,
+          "matchName": "Malphite",
+          "matchDescription": "Very easy pre 6"
+        }
+      ]
+    }
+  ]
+}
