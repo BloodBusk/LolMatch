@@ -10,10 +10,16 @@ export const links = () => [
   },
 ];
 
-export const loader = async () => {
+export const loader = async ({ request }) => {
   const db = await connectDb();
+  const url = new URL(request.url);
+  const nameSearch = url.searchParams.get("search");
   const comps = await db.models.Comp.find();
-  return comps;
+  return comps.filter((comp) =>
+    nameSearch
+      ? comp.name.toLowerCase().includes(nameSearch.toLowerCase())
+      : true
+  );
 };
 
 export default function Index() {
@@ -58,8 +64,11 @@ export default function Index() {
           </div>
         </section>
         <section className="compsContainer3">
+          <Form>
+            <button type="submit" name="_action" value="signup">Signup</button>
+          </Form>
           <Form method="post">
-            <button type="submit" name="action" value="login">
+            <button type="submit" name="_action" value="login">
               Login
             </button>
           </Form>

@@ -1,6 +1,6 @@
 .compIdContainer {
-  width: 80%;
   display: flex;
+  flex-basis: 80%;
   flex-direction: column;
   align-items: center;
   background: var(--color-black);
@@ -51,20 +51,29 @@
 }
 
 .compIdUpvotes button {
-    background: var(--color-orange);
-    color: var(--color-white);
-    border: none;
-    font-size: var(--font-small);
-    cursor: pointer;
-    margin-left: 1vw;
-    padding: 2px;
+  background: var(--color-orange);
+  color: var(--color-white);
+  border: none;
+  font-size: var(--font-small);
+  cursor: pointer;
+  margin-left: 1vw;
+  padding: 2px;
 }
 
-.compIdUpdate{
-    background: var(--color-orange);
-    color: var(--color-white);
-    border: none;
-    padding: 2px;
-    cursor: pointer;
-    font-size: var(--font-small);
+.compIdUpdate {
+  background: var(--color-orange);
+  color: var(--color-white);
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  font-size: var(--font-small);
+}
+
+.compsIdIndex {
+  display: flex;
+  flex-basis: 80%;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-black);
+  color: white;
 }

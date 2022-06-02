@@ -20,6 +20,7 @@
 
 body{
     display: flex;
+    width: 100%;
 }
 
 ::-webkit-scrollbar{

@@ -2,7 +2,6 @@ import { redirect } from "@remix-run/node";
 import { useLoaderData, Form, Outlet, Link } from "@remix-run/react";
 import connectDb from "~/db/connectDb.server.js";
 import style from "~/styles/compId.css";
-import arrowUp from "~/img/arrow-upward.png";
 
 export const links = () => [
   {
