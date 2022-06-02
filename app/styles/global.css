@@ -6,7 +6,35 @@
     --color-white: #FFFFFF;
     --color-red: red;
     --font-title: 32px;
-    --font-title-2: 24px;
-    --font-paragraph: 20px;
+    --font-title-2: 22px;
+    --font-paragraph: 18px;
     --font-small: 16px;
+    font-family: sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+}
+
+::-webkit-scrollbar{
+    width: 1em;
+    margin-left: 2vw;
+}
+
+::-webkit-scrollbar-track{
+    background: #282528;
+    border-radius: 20px;
+    margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #2E3D7C;
+    border-radius: 20px;
+    border: 0.25em solid #282528;
 }

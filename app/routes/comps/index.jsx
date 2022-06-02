@@ -1,3 +1,3 @@
-export default function CompsIndex() {
+export default function CompsIdIndex() {
   return <></>;
 }

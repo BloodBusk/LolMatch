@@ -1,7 +1,7 @@
 import { redirect } from "@remix-run/node";
 
 export async function loader() {
-  return redirect("/navbar");
+  return redirect("/comps");
 }
 
 export default function Index() {
