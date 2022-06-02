@@ -1,41 +1,9 @@
-{
-  "champions": [
-    {
-      "id": 1,
-      "name": "Ahri",
-      "matches": [
-        {
-          "id": 1,
-          "matchName": "Yasuo",
-          "matchDescription": "Very hard to play against"
-        },
-        {
-          "id": 2,
-          "matchName": "Zed",
-          "matchDescription": "Very hard to play against"
-        }
-      ]
-    },
-    {
-      "_id": 2,
-      "name": "Annie",
-      "matches": [
-        {
-          "_id": 1,
-          "matchName": "Yasuo",
-          "matchDescription": "Very hard"
-        },
-        {
-          "_id": 2,
-          "matchName": "Zed",
-          "matchDescription": "Very easy"
-        },
-        {
-          "_id": 3,
-          "matchName": "Malphite",
-          "matchDescription": "Very easy pre 6"
-        }
-      ]
-    }
-  ]
-}
+"name": "Splitpush",
+"mainPicks": ["champ1", "champ2", "champ1", "champ2", "champ1"],
+"altPicks" : ["champ1", "champ2", "champ1", "champ2", "champ1"],
+"bans": ["champ1", "champ2", "champ1", "champ2", "champ1"],
+"Objective": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ",
+"Strengths": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ",
+"Weaknesses": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ",
+"upvotes": 1,
+"patch": "10.10"

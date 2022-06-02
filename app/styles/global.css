@@ -1,0 +1,12 @@
+:root{
+    --color-black: #282528;
+    --color-blue: #2E3D7C;
+    --color-orange: #E15D3A;
+    --color-gold: #FFA73C;
+    --color-white: #FFFFFF;
+    --color-red: red;
+    --font-title: 32px;
+    --font-title-2: 24px;
+    --font-paragraph: 20px;
+    --font-small: 16px;
+}
