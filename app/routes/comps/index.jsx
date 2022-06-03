@@ -8,5 +8,5 @@ export const links = () => [
 ];
 
 export default function CompsIdIndex() {
-  return <><div className="compsIdIndex">Choose a comp on the left</div></>;
+  return <><div className="compsIdIndex">Create you favorite team comps or <br></br>view comps made by other league enthusiasts</div></>;
 }

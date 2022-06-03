@@ -23,6 +23,7 @@ export default function CompsId() {
       <div className="compIdContainer">
         <section className="compIdTitle">
           <h1>{comps.name}</h1>
+          <p>{comps.patch}</p>
         </section>
         <section className="compIdContent">
           <div className="compIdUpvotes">
@@ -33,16 +34,10 @@ export default function CompsId() {
               </button>
             </Form>
           </div>
-          <Form>
-            <button
-              type="submit"
-              value="update"
-              name="_action"
-              className="compIdUpdate"
-            >
-              Update
-            </button>
-          </Form>
+
+          <Link to={`update`} className="compIdUpdate">
+            Update
+          </Link>
         </section>
         <div className="compIdContainer2">
           <section className="compIdContent">

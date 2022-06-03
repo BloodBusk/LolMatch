@@ -65,8 +65,8 @@
   color: var(--color-white);
   border: none;
   padding: 2px;
-  cursor: pointer;
   font-size: var(--font-small);
+  text-decoration: none;
 }
 
 .compsIdIndex {
@@ -76,4 +76,5 @@
   align-items: center;
   background: var(--color-black);
   color: white;
+  text-align: center;
 }

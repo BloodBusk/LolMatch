@@ -70,15 +70,52 @@
 .compsContainer3 {
   width: 100%;
   padding: 10px;
+  line-height: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.compsContainer3 Form button {
+.compsContainer3Link {
+  display: flex;
+  justify-content: space-between;
   font-size: var(--font-small);
   font-weight: bold;
-  width: 60px;
-  height: 25px;
-  cursor: pointer;
-  background: transparent;
-  border: none;
   color: var(--color-orange);
+  text-decoration: none;
+}
+
+.compsContainer4{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  line-height: 2;
+}
+
+.compsContainer4 div{
+  line-height: 2;
+}
+
+.compsContainer4Link{
+  font-size: var(--font-small);
+  font-weight: bold;
+  color: var(--color-orange);
+  text-decoration: none;
+}
+
+.compsContainer4btn{
+  font-size: var(--font-small);
+  font-weight: bold;
+  color: var(--color-orange);
+  text-decoration: none;
+  background: transparent;
+  border:none;
+  cursor: pointer;
+}
+
+.compsContainer4Username{
+  font-size: var(--font-small);
+  font-weight: bold;
+  color: var(--color-white);
 }

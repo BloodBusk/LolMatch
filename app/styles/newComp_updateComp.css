@@ -1,0 +1,119 @@
+.compContainer {
+  display: flex;
+  flex-basis: 80%;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-black);
+  height: 100vh;
+  overflow: auto;
+}
+
+.compForm {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid var(--color-blue);
+  margin: 2vh 0;
+}
+
+.compFormName {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 2vh 0;
+}
+.compFormName div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compFormPicks {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 2vh 0;
+}
+
+.compFormPicks div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compFormTextArea {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 2vh 0;
+}
+
+.compFormTextArea div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compForm h1 {
+  font-size: var(--font-title);
+  color: var(--color-white);
+  margin: 2vh 0;
+}
+
+.compForm button {
+  margin: 2vh 0;
+  padding: 1% 4%;
+  border: none;
+  background: var(--color-orange);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.compForm label {
+  color: var(--color-white);
+  font-size: var(--font-paragraph);
+}
+
+.compForm input {
+  background: var(--color-blue);
+  border: none;
+  color: var(--color-gold);
+  font-size: var(--font-paragraph);
+  padding: 5px 10px;
+  margin: 1vh 0;
+}
+
+.compForm textarea {
+  background: var(--color-blue);
+  border: none;
+  color: var(--color-gold);
+  font-size: var(--font-paragraph);
+  padding: 5px 10px;
+  margin: 1vh 0;
+  min-height: 20vh;
+}
+
+.deleteForm {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid var(--color-blue);
+  margin: 2vh 0;
+}
+
+.deleteForm h1 {
+  font-size: var(--font-title);
+  color: var(--color-red);
+  margin: 2vh 0;
+}
+
+.deleteForm button {
+  margin: 2vh 0;
+  padding: 1% 4%;
+  border: none;
+  background: var(--color-red);
+  color: var(--color-white);
+  cursor: pointer;
+}

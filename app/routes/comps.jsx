@@ -1,6 +1,7 @@
-import { redirect } from "@remix-run/node";
-import { useLoaderData, Form, Outlet, NavLink } from "@remix-run/react";
+import { redirect, json } from "@remix-run/node";
+import { useLoaderData, Form, Outlet, NavLink, Link } from "@remix-run/react";
 import connectDb from "~/db/connectDb.server.js";
+import { logout, getLoggedUser } from "~/session.server.js";
 import style from "~/styles/comps.css";
 
 export const links = () => [
@@ -11,19 +12,33 @@ export const links = () => [
 ];
 
 export const loader = async ({ request }) => {
+  const userId = await getLoggedUser(request);
   const db = await connectDb();
   const url = new URL(request.url);
   const nameSearch = url.searchParams.get("search");
   const comps = await db.models.Comp.find();
-  return comps.filter((comp) =>
-    nameSearch
-      ? comp.name.toLowerCase().includes(nameSearch.toLowerCase())
-      : true
-  );
+  const login = await db.models.Login.findById(userId);
+  return [
+    comps.filter((comp) =>
+      nameSearch
+        ? comp.name.toLowerCase().includes(nameSearch.toLowerCase())
+        : true
+    ),
+    userId,
+    login,
+  ];
+};
+
+export const action = async ({ request }) => {
+  const form = await request.formData();
+  let { _action, ...values } = Object.fromEntries(form);
+  if (_action === "logout") {
+    return logout(request);
+  }
 };
 
 export default function Index() {
-  const comps = useLoaderData();
+  const [comps, userId, login] = useLoaderData();
   return (
     <>
       <div className="compsContainer">
@@ -64,14 +79,35 @@ export default function Index() {
           </div>
         </section>
         <section className="compsContainer3">
-          <Form>
-            <button type="submit" name="_action" value="signup">Signup</button>
-          </Form>
-          <Form method="post">
-            <button type="submit" name="_action" value="login">
-              Login
-            </button>
-          </Form>
+          {!userId ? (
+            <div>
+              <Link to="/services/signup" className="compsContainer3Link">
+                Signup
+              </Link>
+              <Link to="/services/login" className="compsContainer3Link">
+                Login
+              </Link>
+            </div>
+          ) : (
+            <div className="compsContainer4">
+              <div>
+                <Link to="/comps/newComp" className="compsContainer4Link">
+                  Add Team Comp
+                </Link>
+                <Form method="post">
+                  <button
+                    type="submit"
+                    name="_action"
+                    value="logout"
+                    className="compsContainer4btn"
+                  >
+                    Logout
+                  </button>
+                </Form>
+              </div>
+              <p className="compsContainer4Username">{login.username}</p>
+            </div>
+          )}
         </section>
       </div>
       <Outlet />
