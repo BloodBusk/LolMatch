@@ -3,6 +3,7 @@ import { useLoaderData, Form, Outlet, Link } from "@remix-run/react";
 import connectDb from "~/db/connectDb.server.js";
 import style from "~/styles/compId.css";
 
+
 export const links = () => [
   {
     rel: "stylesheet",
