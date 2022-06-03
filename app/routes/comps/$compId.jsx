@@ -1,8 +1,8 @@
 import { redirect } from "@remix-run/node";
 import { useLoaderData, Form, Outlet, Link } from "@remix-run/react";
+import { getLoggedUser } from "~/session.server.js";
 import connectDb from "~/db/connectDb.server.js";
 import style from "~/styles/compId.css";
-
 
 export const links = () => [
   {
@@ -11,14 +11,15 @@ export const links = () => [
   },
 ];
 
-export const loader = async ({ params }) => {
+export const loader = async ({ request, params }) => {
   const db = await connectDb();
+  const userId = await getLoggedUser(request);
   const comp = await db.models.Comp.findById(params.compId);
-  return comp;
+  return [comp, userId];
 };
 
 export default function CompsId() {
-  const comps = useLoaderData();
+  const [comps, userId] = useLoaderData();
   return (
     <>
       <div className="compIdContainer">
@@ -35,10 +36,13 @@ export default function CompsId() {
               </button>
             </Form>
           </div>
-
-          <Link to={`update`} className="compIdUpdate">
-            Update
-          </Link>
+          {userId==comps.loginId ? (
+            <Link to={`update`} className="compIdUpdate">
+              Update
+            </Link>
+          ) : (
+            ""
+          )}
         </section>
         <div className="compIdContainer2">
           <section className="compIdContent">

@@ -16,6 +16,7 @@ export const loader = async ({ request }) => {
   const db = await connectDb();
   const url = new URL(request.url);
   const nameSearch = url.searchParams.get("search");
+  const searchMyComps = url.searchParams.get("searchMyComps");
   const comps = await db.models.Comp.find();
   const login = await db.models.Login.findById(userId);
   return [
@@ -30,6 +31,7 @@ export const loader = async ({ request }) => {
 };
 
 export const action = async ({ request }) => {
+  const db = await connectDb();
   const form = await request.formData();
   let { _action, ...values } = Object.fromEntries(form);
   if (_action === "logout") {
@@ -53,11 +55,11 @@ export default function Index() {
             />
           </Form>
           <div>
-            <Form method="post" className="displayCompsForm">
-              <button type="submit" name="_action" value="allComps">
+            <Form method="get" className="displayCompsForm">
+              <button type="search" name="search" value="">
                 All Comps
               </button>
-              <button type="submit" name="_action" value="myComps">
+              <button type="search" name="searchMyComps" value="searchMyComps">
                 My Comps
               </button>
             </Form>
