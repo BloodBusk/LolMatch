@@ -1,4 +1,4 @@
-import { redirect } from "@remix-run/node";
+import { redirect, json } from "@remix-run/node";
 import { useLoaderData, Form, Outlet, Link } from "@remix-run/react";
 import { getLoggedUser } from "~/session.server.js";
 import connectDb from "~/db/connectDb.server.js";
@@ -18,6 +18,23 @@ export const loader = async ({ request, params }) => {
   return [comp, userId];
 };
 
+export const action = async ({ request, params }) => {
+  const db = await connectDb();
+  try {
+    await db.models.Comp.updateOne(
+      {
+        _id: params.compId,
+      },
+      {
+        $inc: { upvotes: 1 },
+      }
+    );
+    return redirect(`/comps/${params.compId}`);
+  } catch (err) {
+    return json(err.errors, { status: 400 });
+  }
+};
+
 export default function CompsId() {
   const [comps, userId] = useLoaderData();
   return (
@@ -30,13 +47,11 @@ export default function CompsId() {
         <section className="compIdContent">
           <div className="compIdUpvotes">
             <p>{comps.upvotes}</p>
-            <Form>
-              <button type="submit" value="upvote" name="_action">
-                Upvote
-              </button>
+            <Form method="post">
+              <button type="submit">Upvote</button>
             </Form>
           </div>
-          {userId==comps.loginId ? (
+          {userId == comps.loginId ? (
             <Link to={`update`} className="compIdUpdate">
               Update
             </Link>

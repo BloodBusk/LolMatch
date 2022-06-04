@@ -23,6 +23,8 @@ export const loader = async ({ request }) => {
     comps.filter((comp) =>
       nameSearch
         ? comp.name.toLowerCase().includes(nameSearch.toLowerCase())
+        : searchMyComps
+        ? comp.loginId.toString().includes(searchMyComps)
         : true
     ),
     userId,
@@ -59,9 +61,13 @@ export default function Index() {
               <button type="search" name="search" value="">
                 All Comps
               </button>
-              <button type="search" name="searchMyComps" value="searchMyComps">
-                My Comps
-              </button>
+              {userId ? (
+                <button type="search" name="searchMyComps" value={userId}>
+                  My Comps
+                </button>
+              ) : (
+                ""
+              )}
             </Form>
           </div>
           <div className="compLinksContainer">
