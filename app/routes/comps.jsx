@@ -99,6 +99,7 @@ export default function Index() {
           ) : (
             <div className="compsContainer4">
               <div>
+                <Link to="/comps/generateComp" className="compsContainer4Link">Auto Generate Comp</Link>
                 <Link to="/comps/newComp" className="compsContainer4Link">
                   Add Team Comp
                 </Link>

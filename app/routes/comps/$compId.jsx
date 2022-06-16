@@ -3,6 +3,7 @@ import { useLoaderData, Form, Outlet, Link } from "@remix-run/react";
 import { getLoggedUser } from "~/session.server.js";
 import connectDb from "~/db/connectDb.server.js";
 import style from "~/styles/compId.css";
+import upvote from "~/img/arrow-upward.png"
 
 export const links = () => [
   {
@@ -15,6 +16,7 @@ export const loader = async ({ request, params }) => {
   const db = await connectDb();
   const userId = await getLoggedUser(request);
   const comp = await db.models.Comp.findById(params.compId);
+
   return [comp, userId];
 };
 
@@ -48,7 +50,7 @@ export default function CompsId() {
           <div className="compIdUpvotes">
             <p>{comps.upvotes}</p>
             <Form method="post">
-              <button type="submit">Upvote</button>
+              <button type="submit" className="upvoteBtn"><img src={upvote} alt="" /></button>
             </Form>
           </div>
           {userId == comps.loginId ? (
@@ -64,19 +66,31 @@ export default function CompsId() {
             <div>
               <h2>Main Picks</h2>
               {comps.mainPicks.map((mp, i) => {
-                return <p key={i}>{mp}</p>;
+                return (
+                  <div key={i}>
+                    <img src={"/lolChampIcons/" + mp.replace(/'| /, "_") + ".png"} alt="" />
+                    <p>{mp}</p>
+                  </div>
+                );
               })}
             </div>
             <div>
               <h2>Alternative Picks</h2>
               {comps.altPicks.map((ap, i) => {
-                return <p key={i}>{ap}</p>;
+                
+                return <div key={i}>
+                  <img src={"/lolChampIcons/" + ap.replace(/'| /, "_") + ".png"} alt="" />
+                  <p>{ap}</p>
+                  </div>;
               })}
             </div>
             <div>
               <h2>Preferable Bans</h2>
               {comps.bans.map((ban, i) => {
-                return <p key={i}>{ban}</p>;
+                return <div key={i}>
+                <img src={"/lolChampIcons/" + ban.replace(/'| /, "_") + ".png"} alt="" />
+                <p>{ban}</p>
+                </div>;
               })}
             </div>
           </section>

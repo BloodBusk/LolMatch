@@ -95,6 +95,8 @@
 
 .compsContainer4 div{
   line-height: 2;
+  display: flex;
+  flex-direction: column;
 }
 
 .compsContainer4Link{
