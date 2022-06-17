@@ -1,13 +1,71 @@
 .compContainer {
-    display: flex;
-    flex-basis: 80%;
-    flex-direction: column;
-    align-items: center;
-    background: var(--color-black);
-    height: 100vh;
-    overflow: auto;
-  }
+  display: flex;
+  flex-basis: 80%;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-black);
+  height: 100vh;
+  overflow: auto;
+}
 
-  .white{
-      color: white;
-  }
+.compContainer h1 {
+  margin-top: 1vh;
+  color: var(--color-white);
+}
+
+.compContainer h2{
+    color: var(--color-gold);
+}
+
+.compContainer p {
+  color: var(--color-white);
+}
+
+.buttonContainer{
+  width: 80%;
+}
+
+.buttonContainer form{
+  display: flex;
+  justify-content: center;
+}
+
+.buttonContainer button{
+  margin: 2vh 1vw;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: var(--color-blue);
+  border:none;
+  color: var(--color-gold);
+}
+
+.buttonContainer button:hover{
+  transition: ease-in-out 0.1s;
+  opacity: 0.7;
+}
+
+.teamContainer {
+  border: 5px solid var(--color-blue);
+  display: flex;
+  margin: 2vh 1vw 0 1vw;
+  height: 30vh;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 80%;
+}
+
+.teamContainer div{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.champIcons {
+  width: 100px;
+  height: 100px;
+}

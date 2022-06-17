@@ -12,7 +12,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 5px solid var(--color-blue);
   margin-bottom: 2vh;
 }
 
@@ -24,18 +23,75 @@
   margin: 3vh 0 2vh 0;
 }
 
-.compIdContent div {
-  width: 30%;
+
+.compIdContent2{
+  width: 90%;
+}
+
+.contentOutline{
+  border: 5px solid var(--color-blue);
+  display: flex;
+  margin: 2vh 1vw 0 1vw;
+  height: 30vh;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.contentOutline div{
+  margin: 1vh 1vw;
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentOutline h2{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-transform: uppercase;
+  transform: rotate(180deg);
+  color: var(--color-gold);
+  background: var(--color-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-title-2);
+  height: 101%;
+  width: 10%;
+  margin-left: -1px;
+}
+
+.contentOutline h3{
+  color: var(--color-gold);
+}
+
+.contentOutline p{
+  color: var(--color-white);
+}
+
+
+
+.compIdContentText{
+  border: 5px solid var(--color-blue);
+  border-radius: 20px;
+  margin: 1vh 1vw;
 }
 
 .compIdContent div h2 {
-  color: var(--color-white);
+  color: var(--color-gold);
   font-size: var(--font-title-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  background: var(--color-blue);
 }
 
 .compIdContent div p {
-  color: var(--color-gold);
+  color: var(--color-white);
   font-size: var(--font-paragraph);
+  margin: 1vh 1vw;
 }
 
 .compIdTitle {
@@ -56,17 +112,25 @@
   border: none;
   font-size: var(--font-small);
   cursor: pointer;
-  margin-left: 1vw;
   padding: 2px;
+  border-radius: 20px;
 }
 
 .compIdUpdate {
-  background: var(--color-orange);
+  background: var(--color-blue);
   color: var(--color-white);
   border: none;
-  padding: 2px;
+  display: flex;
+  align-items: center;
+  padding: 2px 5px;
   font-size: var(--font-small);
   text-decoration: none;
+  border-radius: 20px;
+}
+
+.compIdUpdate:hover{
+  transition: ease-in-out 0.1s;
+  opacity: 0.7;
 }
 
 .compsIdIndex {
@@ -81,6 +145,11 @@
 
 .upvoteBtn{
   width: 20px;
+}
+
+.upvoteBtn:hover{
+  transition: ease-in-out 0.1s;
+  opacity: 0.7;
 }
 
 .upvoteBtn img{
