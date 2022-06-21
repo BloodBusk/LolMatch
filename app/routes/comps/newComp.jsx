@@ -293,12 +293,14 @@ export default function NewComp() {
         </Form>
 
         <section className="champContainer">
-          <h2>Drag and Drop the champs onto the form</h2>
-          <input
-            label="Search"
-            placeholder="Search champions..."
-            onChange={inputHandler}
-          />
+        <div className="champContainerheader">
+            <h2>Drag and Drop the champs onto the form</h2>
+            <input
+              label="Search"
+              placeholder="Search champions..."
+              onChange={inputHandler}
+            />
+          </div>
           <div className="displayAllNamesContainer">
             {filteredData.map((cd) => {
               return (
