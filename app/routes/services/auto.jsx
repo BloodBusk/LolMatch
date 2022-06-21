@@ -46,4 +46,6 @@ export const GenerateRandomTeam = () => {
   return finalTeam;
 };
 
-
+export const TeamObjective = () => {
+  return "";
+}

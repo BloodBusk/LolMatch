@@ -1,7 +1,6 @@
 .compContainer {
   display: flex;
   flex-basis: 80%;
-  flex-direction: column;
   align-items: center;
   background: var(--color-black);
   height: 100vh;
@@ -9,18 +8,18 @@
 }
 
 .compForm {
-  width: 90%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 5px solid var(--color-blue);
   margin: 2vh 0;
   border-radius: 20px;
+  height: 100vh;
+  overflow: auto;
 }
 
 .compFormName {
-  display: flex;
-  justify-content: space-around;
   width: 100%;
   margin: 2vh 0;
 }
@@ -31,8 +30,6 @@
 }
 
 .compFormPicks {
-  display: flex;
-  justify-content: space-around;
   width: 100%;
   margin: 2vh 0;
 }
@@ -41,12 +38,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 1vw;
+  margin: 1vh 1vw;
 }
 
 .compFormTextArea {
-  display: flex;
-  justify-content: space-around;
   width: 100%;
   margin: 2vh 0;
 }
@@ -73,7 +68,7 @@
   cursor: pointer;
 }
 
-.compForm button:hover{
+.compForm button:hover {
   transition: ease-in-out 0.1s;
   background: var(--color-blue);
   color: var(--color-orange);
@@ -91,6 +86,8 @@
   font-size: var(--font-paragraph);
   padding: 5px 10px;
   margin: 1vh 0;
+  cursor: default;
+  caret-color: transparent;
 }
 
 .compForm textarea {
@@ -127,7 +124,63 @@
   cursor: pointer;
 }
 
-.deleteForm button:hover{
+.deleteForm button:hover {
   background: var(--color-blue);
   color: var(--color-red);
+}
+
+.champContainer {
+  width: 40%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.champContainerheader {
+  position: fixed;
+  width: 30vw;
+  background: var(--color-black);
+  margin: auto;
+  padding: 1vh 0;
+}
+
+.champContainerheader h2 {
+  font-size: var(--font-title-2);
+  text-align: center;
+  margin: 1vh 1vw;
+  color: var(--color-white);
+}
+
+.champContainerheader input {
+  width: 90%;
+  margin: 1vh auto;
+  display: flex;
+  padding: 8px;
+  font-size: var(--font-paragraph);
+  border-radius: 10px;
+}
+
+.displayAllNamesContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 1vw;
+  margin-top: 120px;
+}
+
+.displayAllNamesContent {
+  margin: 5px;
+  color: var(--color-white);
+  background: var(--color-blue);
+}
+
+.draggingStyle {
+  background: var(--color-black);
+}
+
+.champIcons {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
 }

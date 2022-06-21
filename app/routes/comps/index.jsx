@@ -2,6 +2,7 @@ import style from "~/styles/compId.css";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
+
 export const links = () => [
   {
     rel: "stylesheet",

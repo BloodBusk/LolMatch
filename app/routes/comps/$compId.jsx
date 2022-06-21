@@ -16,8 +16,9 @@ export const loader = async ({ request, params }) => {
   const db = await connectDb();
   const userId = await getLoggedUser(request);
   const comp = await db.models.Comp.findById(params.compId);
+  const login = await db.models.Login.findById(userId);
 
-  return [comp, userId];
+  return [comp, userId, login];
 };
 
 export const action = async ({ request, params }) => {
@@ -38,14 +39,15 @@ export const action = async ({ request, params }) => {
 };
 
 export default function CompsId() {
-  const [comps, userId] = useLoaderData();
+  const [comps, userId, login] = useLoaderData();
   const pos = ["Top", "Jungle", "Middle", "ADC", "Support"];
   return (
     <>
       <div className="compIdContainer">
         <section className="compIdTitle">
           <h1>{comps.name}</h1>
-          <p>{comps.patch}</p>
+          <p>Patch: {comps.patch}</p>
+          <p>Author: {login.username} </p>
         </section>
         <section className="compIdContent">
           <div className="compIdUpvotes">
@@ -70,7 +72,7 @@ export default function CompsId() {
                 return (
                   <div key={i}>
                     <h3>{pos[i]}</h3>
-                    <img src={"/lolChampIcons/" + mp.replace(/'| /, "_") + ".png"} alt="" />
+                    <img src={"/lolChampIcons/" + mp.replace(/'| /, "_") + ".png"} alt="" className="champIcons" />
                     <p>{mp}</p>
                   </div>
                 );
@@ -82,7 +84,7 @@ export default function CompsId() {
                 
                 return <div key={i}>
                   <h3>{pos[i]}</h3>
-                  <img src={"/lolChampIcons/" + ap.replace(/'| /, "_") + ".png"} alt="" />
+                  <img src={"/lolChampIcons/" + ap.replace(/'| /, "_") + ".png"} alt="" className="champIcons" />
                   <p>{ap}</p>
                   </div>;
               })}
@@ -91,7 +93,7 @@ export default function CompsId() {
               <h2>Bans</h2>
               {comps.bans.map((ban, i) => {
                 return <div key={i}>
-                <img src={"/lolChampIcons/" + ban.replace(/'| /, "_") + ".png"} alt="" />
+                <img src={"/lolChampIcons/" + ban.replace(/'| /, "_") + ".png"} alt="" className="champIcons" />
                 <p>{ban}</p>
                 </div>;
               })}
