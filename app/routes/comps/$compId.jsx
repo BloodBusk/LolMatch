@@ -1,9 +1,9 @@
 import { redirect, json } from "@remix-run/node";
-import { useLoaderData, Form, Outlet, Link } from "@remix-run/react";
+import { useLoaderData, Form, Outlet, Link, useCatch } from "@remix-run/react";
 import { getLoggedUser } from "~/session.server.js";
 import connectDb from "~/db/connectDb.server.js";
 import style from "~/styles/compId.css";
-import upvote from "~/img/arrow-upward.png"
+import upvote from "~/img/arrow-upward.png";
 
 export const links = () => [
   {
@@ -41,19 +41,21 @@ export const action = async ({ request, params }) => {
 export default function CompsId() {
   const [comps, userId, login] = useLoaderData();
   const pos = ["Top", "Jungle", "Middle", "ADC", "Support"];
+
   return (
     <>
       <div className="compIdContainer">
         <section className="compIdTitle">
           <h1>{comps.name}</h1>
           <p>Patch: {comps.patch}</p>
-          <p>Author: {login.username} </p>
         </section>
         <section className="compIdContent">
           <div className="compIdUpvotes">
             <p>{comps.upvotes}</p>
             <Form method="post">
-              <button type="submit" className="upvoteBtn"><img src={upvote} alt="" /></button>
+              <button type="submit" className="upvoteBtn">
+                <img src={upvote} alt="" />
+              </button>
             </Form>
           </div>
           {userId == comps.loginId ? (
@@ -72,7 +74,11 @@ export default function CompsId() {
                 return (
                   <div key={i}>
                     <h3>{pos[i]}</h3>
-                    <img src={"/lolChampIcons/" + mp.replace(/'| /, "_") + ".png"} alt="" className="champIcons" />
+                    <img
+                      src={"/lolChampIcons/" + mp.replace(/'| /, "_") + ".png"}
+                      alt=""
+                      className="champIcons"
+                    />
                     <p>{mp}</p>
                   </div>
                 );
@@ -81,21 +87,45 @@ export default function CompsId() {
             <div className="contentOutline">
               <h2>Alternative</h2>
               {comps.altPicks.map((ap, i) => {
-                
-                return <div key={i}>
-                  <h3>{pos[i]}</h3>
-                  <img src={"/lolChampIcons/" + ap.replace(/'| /, "_") + ".png"} alt="" className="champIcons" />
-                  <p>{ap}</p>
-                  </div>;
+                return (
+                  <div key={i}>
+                    {ap.name ? (
+                      "Empty"
+                    ) : (
+                      <>
+                        {" "}
+                        <h3>{pos[i]}</h3>
+                        <img
+                          src={
+                            "/lolChampIcons/" + ap.replace(/'| /, "_") + ".png"
+                          }
+                          alt=""
+                          className="champIcons"
+                        />
+                        <p>{ap}</p>
+                      </>
+                    )}
+                  </div>
+                );
               })}
             </div>
             <div className="contentOutline">
               <h2>Bans</h2>
               {comps.bans.map((ban, i) => {
-                return <div key={i}>
-                <img src={"/lolChampIcons/" + ban.replace(/'| /, "_") + ".png"} alt="" className="champIcons" />
-                <p>{ban}</p>
-                </div>;
+                return ban.length !== 0 ? (
+                  <div key={i}>
+                    <img
+                      src={"/lolChampIcons/" + ban.replace(/'| /, "_") + ".png"}
+                      alt=""
+                      className="champIcons"
+                    />
+                    <p>{ban}</p>
+                  </div>
+                ) : (
+                  <div key={i}>
+                    <p>Spot {i + 1} is empty</p>
+                  </div>
+                );
               })}
             </div>
           </section>
@@ -118,3 +148,4 @@ export default function CompsId() {
     </>
   );
 }
+

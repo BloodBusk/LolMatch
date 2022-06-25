@@ -3,6 +3,8 @@ import { useLoaderData, Form, Outlet, NavLink, Link } from "@remix-run/react";
 import connectDb from "~/db/connectDb.server.js";
 import { logout, getLoggedUser } from "~/session.server.js";
 import style from "~/styles/comps.css";
+import collapseLeft from "~/img/collapseLeft.png";
+import { useRef, useState } from "react";
 
 export const links = () => [
   {
@@ -43,11 +45,32 @@ export const action = async ({ request }) => {
 
 export default function Index() {
   const [comps, userId, login] = useLoaderData();
+  const collapseRef = useRef(null);
+  const [show, setShow] = useState(true);
+
+  const handleCollapse = () => {
+    if (show) {
+      collapseRef.current.classList.add("collapse");
+      setShow(false);
+    } else {
+      collapseRef.current.classList.remove("collapse");
+      setShow(true);
+    }
+  };
+
   return (
     <>
       <div className="compsContainer">
-        <section className="compsContainer2">
-          <h1>LoLMix</h1>
+        <section ref={collapseRef} className="compsContainer2">
+          <div className="collapseSideBar">
+            <h1>LoLMix</h1>
+            <img
+              src={collapseLeft}
+              alt=""
+              onClick={handleCollapse}
+              className="collapseSideBarImg"
+            />
+          </div>
           <Form method="get">
             <input
               type="search"
@@ -71,7 +94,7 @@ export default function Index() {
             </Form>
           </div>
           <div className="compLinksContainer">
-            {comps.map((comp) => {
+            {comps?.map((comp) => {
               return (
                 <NavLink
                   to={`/comps/${comp._id}`}
@@ -99,7 +122,9 @@ export default function Index() {
           ) : (
             <div className="compsContainer4">
               <div>
-                <Link to="/comps/generateComp" className="compsContainer4Link">Auto Generate Comp</Link>
+                <Link to="/comps/generateComp" className="compsContainer4Link">
+                  Auto Generate Comp
+                </Link>
                 <Link to="/comps/newComp" className="compsContainer4Link">
                   Add Team Comp
                 </Link>
@@ -123,3 +148,4 @@ export default function Index() {
     </>
   );
 }
+
