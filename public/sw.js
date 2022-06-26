@@ -17,11 +17,21 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") {
     return;
   }
+
+  if (!(event.request.url.indexOf("http") === 0)) {
+    return;
+  }
+  // event.respondWith(
+  //   cacheFirst({
+  //     request: event.request,
+  //     preloadResponsePromise: event.preloadResponse,
+  //     fallbackUrl: Start_URL,
+  //   })
+  // );
+
   event.respondWith(
-    cacheFirst({
+    networkFirst({
       request: event.request,
-      preloadResponsePromise: event.preloadResponse,
-      fallbackUrl: "/",
     })
   );
 });
@@ -75,15 +85,33 @@ const cacheFirst = async ({ request, preloadResponsePromise, fallbackUrl }) => {
     putInCache(request, responseFromNetwork.clone());
     return responseFromNetwork;
   } catch (error) {
+    //fallback response
     const fallbackResponse = await caches.match(fallbackUrl);
     if (fallbackResponse) {
-      return new Response("You Appear to be Offline", {
-        status: 503,
-        statusText: "Network Unavailable",
-        header: {
-          "X-Remix-Catch": "yes",
-        },
-      });
+      return fallbackResponse;
+    }
+    return new Response("Network error happened", {
+      status: 408,
+      headers: { "Content-Type": "text/plain" },
+    });
+  }
+};
+
+const networkFirst = async ({
+  request,
+  preloadResponsePromise,
+  fallbackUrl,
+}) => {
+  //get resources from network
+  try {
+    const responseFromNetwork = await fetch(request);
+    putInCache(request, responseFromNetwork.clone());
+    return responseFromNetwork;
+  } catch (error) {
+    //get resources from cache
+    const responseFromCache = await caches.match(request);
+    if (responseFromCache) {
+      return responseFromCache;
     }
     return new Response("Network error happened", {
       status: 408,
