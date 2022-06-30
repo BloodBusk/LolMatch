@@ -60,8 +60,8 @@ export default function Index() {
 
   return (
     <>
-      <div className="compsContainer">
-        <section ref={collapseRef} className="compsContainer2">
+      <div ref={collapseRef} className="compsContainer">
+        <section  className="compsContainer2">
           <div className="collapseSideBar">
             <h1>LoLMix</h1>
             <img

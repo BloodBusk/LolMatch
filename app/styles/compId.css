@@ -1,6 +1,6 @@
 .compIdContainer {
   display: flex;
-  flex-basis: 80%;
+  width: 80%;
   flex-direction: column;
   align-items: center;
   background: var(--color-black);
